@@ -10,18 +10,17 @@ const generateBtn = document.querySelector('#generate')
 // Created function for passowrd questions
 function questions() {
     let validLength = false;
-    let passwordLength;
+    let passwordLength, parsedLength;
     do {
         passwordLength = prompt('Please enter the length of your password');
-
-        if (isNaN(passwordLength) || parseInt(passwordLength) < 8 || parseInt(passwordLength) > 128) {
+        parsedLength = parseInt(passwordLength)
+        if (isNaN(parsedLength) || parsedLength < 8 || parsedLength > 128) {
             alert('Please enter a password length between 8 and 128 characters');
         } else {
             validLength = true
         }
     }
     while (!validLength);
-
     let validCharacter = false;
     let questionInput;
     do {
