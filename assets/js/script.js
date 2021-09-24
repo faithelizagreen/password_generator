@@ -73,3 +73,42 @@ function generatePassword() {
 
     return finalPassword;
 }
+// Created function to generate password
+function generatePassword() {
+    let passwordOptions = questions();
+    let passwordCombos = [];
+    let finalPassword = "";
+
+    console.log(passwordOptions)
+    if (passwordOptions.usesNumbers) {
+        passwordCombos = passwordCombos.concat(numbers);
+    }
+    if (passwordOptions.usesLowerCase) {
+        passwordCombos = passwordCombos.concat(lowerCase);
+    }
+    if (passwordOptions.usesUpperCase) {
+        passwordCombos = passwordCombos.concat(upperCase);
+    }
+    if (passwordOptions.usesSpecial) {
+        passwordCombos = passwordCombos.concat(special);
+    }
+    console.log(passwordCombos);
+
+    for (var i = 0; i < passwordOptions.length; i++) {
+        finalPassword += passwordCombos[Math.floor(Math.random() * passwordCombos.length)];
+    }
+    console.log(finalPassword);
+
+    return finalPassword;
+}
+
+// Created function to write password
+function writePassword() {
+    let password = generatePassword();
+    let passwordText = document.querySelector('#password');
+
+    passwordText.value = password;
+}
+
+// Event listeners
+generateBtn.addEventListener('click', writePassword);
